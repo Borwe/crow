@@ -291,12 +291,9 @@ namespace crow
     class query_string
     {
     public:
-        static const int MAX_KEY_VALUE_PAIRS_COUNT = 256;
+        static constexpr int MAX_KEY_VALUE_PAIRS_COUNT = 256;
 
-        query_string()
-        {
-
-        }
+        query_string() = default;
 
         query_string(const query_string& qs)
             : url_(qs.url_)

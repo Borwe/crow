@@ -85,7 +85,7 @@ namespace crow
         VARIANT_ALSO_NEGOTIATES       = 506
     };
 
-    inline std::string method_name(HTTPMethod method)
+    inline std::string method_name(const HTTPMethod &method)
     {
         switch(method)
         {
@@ -101,7 +101,6 @@ namespace crow
             case HTTPMethod::Purge: return "PURGE";
             default: return "invalid";
         }
-        return "invalid";
     }
 
     // clang-format on
@@ -142,29 +141,29 @@ namespace crow
         }
 
         template<typename T>
-        T get(unsigned) const;
+        T get(const unsigned) const;
     };
 
     template<>
-    inline int64_t routing_params::get<int64_t>(unsigned index) const
+    inline int64_t routing_params::get<int64_t>(const unsigned index) const
     {
         return int_params[index];
     }
 
     template<>
-    inline uint64_t routing_params::get<uint64_t>(unsigned index) const
+    inline uint64_t routing_params::get<uint64_t>(const unsigned index) const
     {
         return uint_params[index];
     }
 
     template<>
-    inline double routing_params::get<double>(unsigned index) const
+    inline double routing_params::get<double>(const unsigned index) const
     {
         return double_params[index];
     }
 
     template<>
-    inline std::string routing_params::get<std::string>(unsigned index) const
+    inline std::string routing_params::get<std::string>(const unsigned index) const
     {
         return string_params[index];
     }

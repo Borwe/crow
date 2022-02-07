@@ -51,26 +51,34 @@ namespace crow
 
         void close()
         {
-            boost::system::error_code ec;
-            socket_.close(ec);
+            if(is_open()){
+                boost::system::error_code ec;
+                socket_.close(ec);
+            }
         }
 
         void shutdown_readwrite()
         {
-            boost::system::error_code ec;
-            socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_both, ec);
+            if(is_open()){
+                boost::system::error_code ec;
+                socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_both, ec);
+            }
         }
 
         void shutdown_write()
         {
-            boost::system::error_code ec;
-            socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_send, ec);
+            if(is_open()){
+                boost::system::error_code ec;
+                socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_send, ec);
+            }
         }
 
         void shutdown_read()
         {
-            boost::system::error_code ec;
-            socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_receive, ec);
+            if(is_open()){
+                boost::system::error_code ec;
+                socket_.shutdown(boost::asio::socket_base::shutdown_type::shutdown_receive, ec);
+            }
         }
 
         template<typename F>
