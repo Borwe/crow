@@ -21,6 +21,8 @@ endif()
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+set(CROW_BUILD_TESTS 1)
+
 # Default to build type "Release" unless tests are being built
 if(NOT CMAKE_BUILD_TYPE)
 	if (NOT CROW_BUILD_TESTS)
@@ -92,7 +94,7 @@ if(CROW_BUILD_EXAMPLES)
 endif()
 
 # Tests
-if(NOT MSVC AND CROW_BUILD_TESTS)
+if(CROW_BUILD_TESTS)
 	if(NOT "compression" IN_LIST CROW_FEATURES)
 		message(STATUS "Compression tests are omitted. (Configure with CROW_FEATURES containing 'compression' to enable them)")
 	endif()

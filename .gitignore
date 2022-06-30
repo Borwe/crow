@@ -52,3 +52,7 @@ html/
 
 #VS-Code
 .vscode
+
+#LSP
+.cache
+compile_commands.json

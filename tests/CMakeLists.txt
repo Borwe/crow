@@ -8,6 +8,9 @@ set(TEST_SRCS
 )
 
 add_executable(unittest ${TEST_SRCS})
+if(MSVC)
+  target_compile_options(unittest PUBLIC /bigobj)
+endif()
 target_link_libraries(unittest Crow::Crow)
 add_warnings_optimizations(unittest)
 
